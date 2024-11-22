@@ -1,7 +1,7 @@
 import socketio
 from json import dumps
 
-sio = socketio.Server(cors_allowed_origins="*")
+sio = socketio.Server(cors_allowed_origins=["https://webdisplay.onrender.com"])
 app = socketio.WSGIApp(sio)
 
 offers = {}
