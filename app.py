@@ -13,7 +13,7 @@ def connect(sid, environ):
 
 @sio.event
 def disconnect(sid):
-    offers.pop(sid)
+    remove_sid(sid)
     print(f"Cliente {sid} desconectado")
     sio.emit('offers', dumps(offers))
 
@@ -24,7 +24,7 @@ def message(sid, data):
 
 @sio.event
 def removesid(sid,):
-    offers.pop(sid)
+    remove_sid(sid)
     sio.emit("offers", dumps(offers))
 
 
@@ -40,6 +40,13 @@ def answer(sid, sidsender, data):
     print(f"\033[32manswer received from {sid} to {sidsender}!\033[m")
     print("Sended")
     sio.emit("answer", data, to=sidsender)
+
+def remove_sid(sid):
+    global offers
+    try:
+        offers.pop(sid)
+    except:
+        pass
 
 if __name__ == '__main__':
     import eventlet
