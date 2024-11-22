@@ -46,4 +46,4 @@ if __name__ == '__main__':
     import socketio
 
     # Usamos o Eventlet para suportar o gerenciamento assíncrono do WebSocket
-    eventlet.wsgi.server(eventlet.listen(('0.0.0.0', 0)), app)
+    eventlet.wsgi.server(eventlet.listen(('0.0.0.0', 8090)), app)
