@@ -41,6 +41,10 @@ def answer(sid, sidsender, data):
     print("Sended")
     sio.emit("answer", data, to=sidsender)
 
+@sio.event
+def iceCandidate(sid, data):
+    sio.emit("iceCandidate", data)
+
 def remove_sid(sid):
     global offers
     try:
